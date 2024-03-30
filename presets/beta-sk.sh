@@ -96,7 +96,6 @@ export UI_BOOTSTRAP="\
 	zsh \
 	xbindkeys \
 	steam-im-modules \
-	systemd-swap \
 	ttf-twemoji-default \
 	ttf-hack \
 	ttf-dejavu \
