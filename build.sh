@@ -81,6 +81,9 @@ case $key in
 esac
 done
 
+set -e
+set -x
+
 # Check if everything is set.
 if [[ -z "{$BUILD_FLAVOR_MANIFEST}" ]]; then
 	echo "Build flavor was not set. Aborting."
@@ -103,10 +106,10 @@ PACCFG_HWSUPPORT=${SCRIPTPATH}/pacman-hwsupport-${BUILD_FLAVOR_MANIFEST_ID}.conf
 ROOT_WORKDIR=${WORKDIR}/rootfs_mnt
 echo "Preparing to create deployment image..."
 # Pre-build cleanup
-umount -l ${ROOT_WORKDIR}
-rm -rf ${WORKDIR}/*.img*
-rm -rf ${WORKDIR}/*.img
-rm -rf ${WORKDIR}/work.img
+umount -l ${ROOT_WORKDIR} || true
+rm -rf ${WORKDIR}/*.img* || true
+rm -rf ${WORKDIR}/*.img || true
+rm -rf ${WORKDIR}/work.img || true
 
 # Start building here
 mkdir -p ${WORKDIR}
